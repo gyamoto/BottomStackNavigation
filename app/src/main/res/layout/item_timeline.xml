@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Timeline title" />
+        tools:text="@tools:sample/first_names" />
 
     <TextView
         android:id="@+id/note"
@@ -28,6 +28,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
-        tools:text="too long timeline note.too long timeline note.too long timeline note." />
+        tools:text="@tools:sample/lorem" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
