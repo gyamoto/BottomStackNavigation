@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.gya.bottomstacknavigation.R
@@ -32,12 +33,16 @@ class TimelineFragment : Fragment() {
         adapter.submitList(items)
     }
 
+    private fun clickItem(view: View) {
+        Navigation.createNavigateOnClickListener(R.id.action_timeline_to_profile).onClick(view)
+    }
+
     inner class ViewHolder(parent: ViewGroup) : AbstractViewHolder(parent, R.layout.item_timeline) {
 
         fun bind(timeline: Timeline) {
             itemView.title.text = timeline.title
             itemView.note.text = timeline.note
-            itemView.setOnClickListener { }
+            itemView.setOnClickListener { clickItem(it) }
         }
     }
 

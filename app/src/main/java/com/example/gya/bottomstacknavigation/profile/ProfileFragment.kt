@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.example.gya.bottomstacknavigation.R
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 
@@ -19,7 +20,9 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.favorite.setOnClickListener { }
+        view.favorite.setOnClickListener {
+            Navigation.createNavigateOnClickListener(R.id.action_profile_to_detail).onClick(it)
+        }
     }
 
     companion object {
