@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.gya.bottomstacknavigation.R
 import com.example.gya.bottomstacknavigation.common.AbstractViewHolder
+import com.example.gya.bottomstacknavigation.profile.ProfileFragmentArgs
 import kotlinx.android.synthetic.main.fragment_timeline.view.*
 import kotlinx.android.synthetic.main.item_timeline.view.*
 
@@ -33,8 +34,11 @@ class TimelineFragment : Fragment() {
         adapter.submitList(items)
     }
 
-    private fun clickItem(view: View) {
-        Navigation.createNavigateOnClickListener(R.id.action_timeline_to_profile).onClick(view)
+    private fun clickItem(timeline: Timeline) {
+        Navigation.createNavigateOnClickListener(
+            R.id.action_timeline_to_profile,
+            ProfileFragmentArgs.Builder(timeline.id).build().toBundle()
+        ).onClick(view)
     }
 
     inner class ViewHolder(parent: ViewGroup) : AbstractViewHolder(parent, R.layout.item_timeline) {
@@ -42,7 +46,7 @@ class TimelineFragment : Fragment() {
         fun bind(timeline: Timeline) {
             itemView.title.text = timeline.title
             itemView.note.text = timeline.note
-            itemView.setOnClickListener { clickItem(it) }
+            itemView.setOnClickListener { clickItem(timeline) }
         }
     }
 

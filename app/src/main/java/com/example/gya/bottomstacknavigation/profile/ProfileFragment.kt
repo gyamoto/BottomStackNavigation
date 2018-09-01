@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 class ProfileFragment : Fragment() {
 
+    private val postId: Int by lazy { ProfileFragmentArgs.fromBundle(arguments).postId }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -20,13 +22,10 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        view.post_id.text = postId.toString()
+
         view.favorite.setOnClickListener {
             Navigation.createNavigateOnClickListener(R.id.action_profile_to_detail).onClick(it)
         }
-    }
-
-    companion object {
-
-        fun newInstance(): ProfileFragment = ProfileFragment()
     }
 }
